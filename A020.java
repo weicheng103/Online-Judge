@@ -7,7 +7,10 @@ public class A020 {
 		int tmp = 0;
 		switch (prefix) {
 		case 'A':
-			tmp =10;
+			int num = 10;
+			int a = num / 10;
+			int b = num % 10;
+			tmp = a + b * 9;
 			break;
 		}
 		return tmp;
@@ -23,16 +26,20 @@ public class A020 {
 			int validate = 0;
 			int checksum = 0;
 			for (int i = 1; i < 9; i++) {
-				checksum = array[i] * (9 - i);
+				checksum += Character.getNumericValue(array[i]) * (9 - i);
 
 			}
-			validate = pre(array[0]) + checksum + array[9];
-			
-			if(validate % 10 == 0){
+			// System.out.println(array);
+			validate = pre(array[0]) + checksum + (Character.getNumericValue(array[9]));
+			System.out.println(pre(array[0]));
+			System.out.println(checksum);
+			System.out.println(array[9]);
+			System.out.println(validate);
+
+			if (validate % 10 == 0) {
 				System.out.println("real");
-			}
-			else{
-				System.out.println("face");
+			} else {
+				System.out.println("fake");
 			}
 		}
 	}
